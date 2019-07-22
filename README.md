@@ -13,5 +13,12 @@ web socket server is developing..
 10) now server running on https://localhost:3000
 11) sudo npm install --save-dev nodemon => for add nodemon server to project
 12) add "start:server": "nodemon server.js" to scripts in package.json file for run nodemon Server
-13) npm run start:server => now you can run server using this command
+13) npm run start:server OR npm start=> now you can run server using this command
 14) add tutorial code
+15) sudo npm install socket.io --save => for add socket.io dependency
+16) make folder named connection and make file SocketConnection.js for handle socket connection
+17) socket wala wena wede:-
+    socket.io eken const ekak hadagannawa socket_io kiyala. eeta passe eke object ekak hadagannawa io kiyana namen. den ethakota io kiyana constant variable eke thiyenne socket ekak.
+
+
+20) sudo npm install dotenv --save => for add .env file

@@ -1,63 +1,26 @@
-const app = require('./app');
-const debug=require('debug')('node-angular');
-
+require('dotenv').config();
 const http = require('http');
+const app = require('./app');
+// const debug=require('debug')('node-angular');
+
 
 // const port = process.env.PORT || 3000;
 // const server = http.createServer((req, res) => {
 //   res.end('This is me');
 // });
 
-// from tutorial code
-
-const normalizePort = val => {
-  var port = parseInt(val, 10);
-
-  if (isNaN(port)) {
-    // named pipe
-    return val;
-  }
-
-  if (port >= 0) {
-    // port number
-    return port;
-  }
-
-  return false;
-};
-
-const onError = error => {
-  if (error.syscall !== "listen") {
-    throw error;
-  }
-  const bind = typeof port === "string" ? "pipe " + port : "port " + port;
-  switch (error.code) {
-    case "EACCES":
-      console.error(bind + " requires elevated privileges");
-      process.exit(1);
-      break;
-    case "EADDRINUSE":
-      console.error(bind + " is already in use");
-      process.exit(1);
-      break;
-    default:
-      throw error;
-  }
-};
-
-const onListening = () => {
-  const addr = server.address();
-  const bind = typeof port === "string" ? "pipe " + port : "port " + port;
-  debug("Listening on " + bind);
-};
-
-const port = normalizePort(process.env.PORT || "3000");
-
-// end from tutorial code
-
 // request and response serama handle wenne express haraha nisa server eka hadanawa express framework eka yodaagaththa app kiyana variable eken
 const server = http.createServer(app);
-app.set('port', port);
-server.on("error", onError);
-server.on("listening", onListening);
-server.listen(port);
+var io = app.io;
+io.attach(server);
+
+server.listen(process.env.PORT, (err) => {
+  if (err) {
+    console.log(process.env.PORT + " server error");
+  } else {
+    console.log(process.env.PORT + " server up and running");
+  }
+});
+
+
+module.exports.io = io;

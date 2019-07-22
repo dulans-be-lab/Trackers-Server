@@ -1,10 +1,42 @@
 const express = require('express');
-
+const socket_io = require('socket.io');
+const body_parser = require('body-parser');
+const io = socket_io();
 const app = express();
 
+app.io = io;
+
+const socket = require('./connection/SocketConnection')(io);
+const v1Routes = require('./api/v1.0.0/routes/v1_routes');
+
+app.use(body_parser.urlencoded({
+  extended: false,
+  limit: '50mb'
+}));
+
+// routes walamul kotasa ena heti
+app.use('/api/v1.0.0', v1Routes);
+
+// Global ERROR HANDLER start
 app.use((req, res, next) => {
   // next eken thamai eelanga middleware ekata call karanne
-  res.send('from express server bro!!!');
+  // res.send('from express server bro!!!');
+  const error = new Error('Routes hariyata daanna sudu mahaththayaa... Server ekata mukuth karanna bee oyaata... :-)');
+  error.status = 500;
+  next(error);
 });
 
+app.use((error, req, res, next) => {
+  res.status(error.status || 500);
+  res.json({
+    error: {
+      message: error.message
+    }
+  });
+});
+
+// Global ERROR HANDLER end
+
+
+socket.createConnection();
 module.exports = app;
