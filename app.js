@@ -8,6 +8,7 @@ app.io = io;
 
 const socket = require('./connection/SocketConnection')(io);
 const v1Routes = require('./api/v1.0.0/routes/v1_routes');
+const database = require('./connection/DBConnection');
 
 app.use(body_parser.urlencoded({
   extended: false,
@@ -37,6 +38,6 @@ app.use((error, req, res, next) => {
 
 // Global ERROR HANDLER end
 
-
+database.createDBConnection();
 socket.createConnection();
 module.exports = app;
