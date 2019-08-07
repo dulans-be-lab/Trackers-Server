@@ -37,3 +37,4 @@ web socket server is developing.
 20) den indan entity eka hadan database eka connect karan controllers gahanna thiyenne..
 21) sudo npm install rand-token --save => for add randomtoken generator
 22) sudo npm i bcryptjs --save => for add encryption package
+23) sudo npm i nodemailer --save => for send mail options
