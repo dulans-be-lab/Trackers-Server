@@ -38,3 +38,5 @@ web socket server is developing.
 21) sudo npm install rand-token --save => for add randomtoken generator
 22) sudo npm i bcryptjs --save => for add encryption package
 23) sudo npm i nodemailer --save => for send mail options
+24) sudo npm i body-parser --save => for parse incomming request boddies in a middleware before you handles,available under the
+    req.body property. you must use in app.js.. (app.js eke weda tika balanna next)

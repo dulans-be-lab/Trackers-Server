@@ -14,6 +14,11 @@ app.use(body_parser.urlencoded({
   extended: false,
   limit: '50mb'
 }));
+// app.use(bodyParser.urlencoded({ extended: false, limit: '50mb' }));
+app.use(body_parser.json({
+  limit: '50mb'
+}));
+
 
 // routes walamul kotasa ena heti
 app.use('/api/v1.0.0', v1Routes);
