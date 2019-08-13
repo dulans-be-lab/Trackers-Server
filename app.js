@@ -14,7 +14,6 @@ app.use(body_parser.urlencoded({
   extended: false,
   limit: '50mb'
 }));
-// app.use(bodyParser.urlencoded({ extended: false, limit: '50mb' }));
 app.use(body_parser.json({
   limit: '50mb'
 }));

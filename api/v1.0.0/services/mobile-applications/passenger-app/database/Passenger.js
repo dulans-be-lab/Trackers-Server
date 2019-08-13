@@ -2,8 +2,6 @@ const Passenger_Entity = require('./../entity/Passenger_Entity');
 const mongoose = require('mongoose');
 
 exports.savePassenger = (passenger_object) => {
-  console.log("asd");
-  console.log(passenger_object);
   return new Promise((resolve, reject) => {
     Passenger_Entity.create(passenger_object).then((result) => {
       resolve(result);

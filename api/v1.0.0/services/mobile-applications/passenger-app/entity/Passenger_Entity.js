@@ -9,7 +9,6 @@ const randomToken = require('rand-token').generator({
 
 
 const Passenger_Entity = mongoose.Schema({
-  // _id: mongoose.Schema.Types.ObjectId,
   // account_type: { type: String },
   first_name: {
     type: String
@@ -31,7 +30,6 @@ const Passenger_Entity = mongoose.Schema({
   password: {
     type: String
   },
-  // profile_pic: { type: String },
   verification_code: {
     type: String
   },
@@ -66,9 +64,10 @@ const Passenger_Entity = mongoose.Schema({
 });
 
 // password encrypt karana eka
-Passenger_Entity.pre('savePassenger', function(next) {
-  var user = this;
-  if (!user.isModified('password')) {
+Passenger_Entity.pre('save', function(next) {
+  // console.log("pre is running");
+  var passenger = this;
+  if (!passenger.isModified('password')) {
     return next();
   }
   encryption.encryptPassword(this.password).then((encryptedPassword) => {
