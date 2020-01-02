@@ -4,5 +4,7 @@ const passengerController = require('./../services/mobile-applications/passenger
 
 
 router.post('/registration',passengerController.passengerRegistration);
+router.post('/login',passengerController.passengerLogin);
+
 
 module.exports=router;

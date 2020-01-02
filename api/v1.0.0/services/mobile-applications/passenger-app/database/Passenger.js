@@ -20,3 +20,13 @@ exports.searchPassenger = (passenger_mail) => {
     });
   });
 };
+
+exports.updatePassenger = (query1, passenger_object) => {
+  return new Promise((resolve, reject) => {
+    Passenger_Entity.findOneAndUpdate(query1, passenger_object).then((result) => {
+      resolve(result)
+    }).catch((error) => {
+      reject(error)
+    });
+  });
+}
